@@ -15,6 +15,7 @@ namespace _2DGraphics
             Graphics g = e.Graphics;
             Pen pen = new Pen(ColorTranslator.FromHtml("#023535"), 15.0F);
             Brush lightestTealBrush = new SolidBrush(ColorTranslator.FromHtml("#0FC2C0"));
+            Brush lighterTealBrush = new SolidBrush(ColorTranslator.FromHtml("#0CABAB"));
 
             //draws hexagon in background
             g.DrawPolygon(pen, new Point[] { new Point(350, 100), new Point(200, 375), new Point(350, 650), new Point(650, 650), new Point(800,375), new Point(650, 100) });
@@ -29,11 +30,13 @@ namespace _2DGraphics
 
             //draws player info in upper left corner
             pen.Width = 5.0F;
+            pen.Color = ColorTranslator.FromHtml("#0FC2C0");
+            g.DrawEllipse(pen, 35, 20, 50, 50);
+            g.DrawArc(pen, 35, 70, 50, 75, 12, -204);
             pen.Color = ColorTranslator.FromHtml("#015958");
             g.DrawRectangle(pen, 10, 10, 100, 100);
-            g.FillEllipse(lightestTealBrush, 35, 20, 50, 50);
-            pen.Color = ColorTranslator.FromHtml("#0FC2C0");
-            g.DrawArc(pen, 35, 70, 50, 50, 0, -205);
+            g.FillPie(lighterTealBrush, 120, 35, 50, 50, -90, -285);
+            g.DrawString("Progress", Font, lighterTealBrush, new PointF(120, 35));
         }
     }
 }
